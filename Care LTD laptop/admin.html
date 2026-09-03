@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laptop Care Ltd | Admin</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Small admin-only additions, kept separate from the storefront styles */
+      .admin-shell {
+        max-width: 40rem;
+        margin: 0 auto;
+        padding: 3rem 1.5rem 6rem;
+      }
+      .admin-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.75rem;
+        margin-bottom: 1.5rem;
+      }
+      .admin-field {
+        margin-bottom: 1rem;
+      }
+      .admin-field label {
+        display: block;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+      }
+      .admin-field input,
+      .admin-field select,
+      .admin-field textarea {
+        width: 100%;
+        padding: 0.6rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        font-family: var(--font-body);
+        font-size: 0.875rem;
+      }
+      .admin-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .admin-msg {
+        font-size: 0.8125rem;
+        margin-top: 0.75rem;
+      }
+      .admin-msg--error {
+        color: #c0392b;
+      }
+      .admin-msg--ok {
+        color: var(--teal);
+      }
+      .admin-list-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.875rem;
+      }
+      .admin-list-item:last-child {
+        border-bottom: none;
+      }
+      .admin-list-item button {
+        color: #c0392b;
+        font-size: 0.8125rem;
+      }
+      #adminGate {
+        text-align: center;
+        padding: 4rem 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a href="/" class="site-header__logo">
+          <span class="site-header__logo-plate">
+            <img src="images/LaptopCare Ltd Logo.png" alt="Laptop Care Ltd" />
+          </span>
+        </a>
+        <nav class="site-header__nav">
+          <span
+            id="adminUserLabel"
+            style="font-size: 0.8125rem; color: rgba(255, 255, 255, 0.7)"
+          ></span>
+          <a href="#" id="signOutLink">Sign out</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Shown until the person is confirmed as a logged-in admin -->
+    <div id="adminGate">
+      <div class="admin-shell" style="padding-top: 0">
+        <div class="admin-card">
+          <h2 class="section-title section-title--sm" style="margin-top: 0">
+            Admin sign in
+          </h2>
+          <p style="color: var(--slate); font-size: 0.875rem">
+            Only accounts listed in the <code>admins</code> Firestore collection
+            can add or edit products.
+          </p>
+          <div class="admin-field">
+            <label for="adminEmail">Email</label>
+            <input type="email" id="adminEmail" autocomplete="username" />
+          </div>
+          <div class="admin-field">
+            <label for="adminPassword">Password</label>
+            <input
+              type="password"
+              id="adminPassword"
+              autocomplete="current-password"
+            />
+          </div>
+          <button class="btn btn--dark" id="signInBtn">Sign in</button>
+          <div class="admin-msg admin-msg--error" id="authMsg"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shown once the person is confirmed as a logged-in admin -->
+    <div class="admin-shell" id="adminPanel" style="display: none">
+      <div class="admin-card">
+        <h2 class="section-title section-title--sm" style="margin-top: 0">
+          Add a product
+        </h2>
+        <form id="productForm">
+          <div class="admin-field">
+            <label for="pName">Name</label>
+            <input
+              type="text"
+              id="pName"
+              required
+              placeholder="e.g. Dell Latitude 7420"
+            />
+          </div>
+          <div class="admin-row">
+            <div class="admin-field">
+              <label for="pGrade">Condition</label>
+              <select id="pGrade">
+                <option value="New">New</option>
+                <option value="A">Grade A</option>
+                <option value="B">Grade B</option>
+                <option value="C">Grade C</option>
+              </select>
+            </div>
+            <div class="admin-field">
+              <label for="pPrice">Price (KES)</label>
+              <input
+                type="number"
+                id="pPrice"
+                required
+                min="0"
+                placeholder="65000"
+              />
+            </div>
+          </div>
+          <div class="admin-field">
+            <label for="pWasPrice"
+              >Was price (KES) — optional, for showing a discount</label
+            >
+            <input type="number" id="pWasPrice" min="0" placeholder="75000" />
+          </div>
+          <div class="admin-field">
+            <label for="pSpecs">Specs (short line)</label>
+            <input
+              type="text"
+              id="pSpecs"
+              placeholder='i5 · 16GB · 512GB SSD · 14"'
+            />
+          </div>
+          <div class="admin-field">
+            <label for="pImage">Image URL</label>
+            <input type="url" id="pImage" placeholder="https://…" />
+          </div>
+          <div class="admin-field">
+            <label
+              ><input
+                type="checkbox"
+                id="pPublished"
+                checked
+                style="width: auto; display: inline; margin-right: 0.4rem"
+              />
+              Published (visible on the storefront)</label
+            >
+          </div>
+          <button class="btn btn--primary" type="submit">Save product</button>
+          <div class="admin-msg" id="productMsg"></div>
+        </form>
+      </div>
+
+      <div class="admin-card">
+        <h2 class="section-title section-title--sm" style="margin-top: 0">
+          Current products
+        </h2>
+        <div id="productList">Loading…</div>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

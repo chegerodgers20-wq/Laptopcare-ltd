@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laptop Care Ltd | Laptops & Parts</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a href="/" class="site-header__logo">
+          <span class="site-header__logo-plate">
+            <img
+              src="images\LaptopCare Ltd Logo (1).png"
+              alt="Laptop Care Ltd"
+            />
+          </span>
+        </a>
+
+        <nav class="site-header__nav">
+          <a href="#products">Laptops</a>
+          <a href="#parts">Parts</a>
+          <a href="#repairs">Repairs</a>
+          <a href="#contact">Contact</a>
+          <button class="cart-toggle" id="cartToggle" aria-label="Open cart">
+            <svg class="icon" viewBox="0 0 24 24">
+              <path d="M6 6h15l-1.5 9h-12L4 3H2" />
+              <circle cx="9" cy="20" r="1" />
+              <circle cx="18" cy="20" r="1" />
+            </svg>
+            <span class="cart-toggle__count" id="cartCount">0</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="hero__inner">
+        <!-- LEFT SIDE: HERO COPY -->
+        <div class="hero__copy">
+          <div class="eyebrow">
+            <span class="eyebrow__dot"></span>
+            NEW · REFURBISHED · PARTS
+          </div>
+
+          <h1 class="hero__title">
+            Every laptop we sell<br />
+            passes the check<br />
+            <span class="hero__title-accent">we'd run on our own.</span>
+          </h1>
+
+          <p class="hero__subtext">
+            New and refurbished laptops, graded honestly and tested before
+            listing. Need a part instead? We stock those too.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#products" class="btn btn--primary">
+              Laptops
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+
+            <a href="#parts" class="btn btn--outline-light">Shop parts</a>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: STAT STRIP -->
+        <div class="stat-strip" id="statStrip">
+          <!-- rows injected by storefront.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CATEGORIES ================= -->
+    <section class="section categories">
+      <div class="container">
+        <div class="category-grid" id="categoryGrid">
+          <!-- cards injected by storefront.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURED PRODUCTS ================= -->
+    <section class="section section--white" id="products">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Featured</span>
+            <h2 class="section-title">Popular this week.</h2>
+          </div>
+          <a href="#" class="link-arrow">View all laptops →</a>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+          <div class="empty-state">Loading laptops…</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GRADING EXPLAINER ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head section-head--single">
+          <span class="kicker">How we grade</span>
+          <h2 class="section-title">
+            The grade on the listing is the condition you'll get.
+          </h2>
+        </div>
+
+        <div class="grade-grid" id="gradeGrid">
+          <!-- grade cards injected by storefront.js -->
+        </div>
+
+        <div class="warranty-note">
+          <svg class="icon icon--sm icon--accent" viewBox="0 0 24 24">
+            <path d="M12 2 3 6v6c0 5 3.8 9 9 10 5.2-1 9-5 9-10V6l-9-4Z" />
+          </svg>
+          Every refurbished laptop ships with a 90-day warranty regardless of
+          grade.
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PARTS STRIP ================= -->
+    <section class="section section--white" id="parts">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Parts & upgrades</span>
+            <h2 class="section-title section-title--sm">
+              Not ready to replace it? Upgrade it.
+            </h2>
+          </div>
+          <a href="#" class="link-arrow">Browse all parts →</a>
+        </div>
+
+        <div class="chip-row" id="partsChips">
+          <!-- chips injected by storefront.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head section-head--single">
+          <span class="kicker">Customers</span>
+          <h2 class="section-title">
+            What buyers say once it's on their desk.
+          </h2>
+        </div>
+
+        <div class="testimonial-grid" id="testimonialGrid">
+          <!-- testimonial cards injected by storefront.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CLOSING CTA ================= -->
+    <section class="cta">
+      <div class="cta__inner">
+        <div>
+          <h2 class="cta__title">
+            Browse the full range, graded and in stock.
+          </h2>
+          <p class="cta__subtext">We also offer repairs and upgrades.</p>
+        </div>
+
+        <div class="hero__actions">
+          <a href="#products" class="btn btn--primary">
+            Shop now
+            <svg class="icon" viewBox="0 0 24 24">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+
+          <a href="#repairs" class="btn btn--outline-light">Book a repair</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CART DRAWER ================= -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+      <div class="cart-drawer__header">
+        <span class="cart-drawer__title">Your cart</span>
+        <button
+          class="cart-drawer__close"
+          id="cartClose"
+          aria-label="Close cart"
+        >
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="cart-drawer__items" id="cartItems">
+        <!-- injected by storefront.js -->
+      </div>
+
+      <div class="cart-drawer__footer">
+        <div class="cart-drawer__subtotal">
+          <span>Subtotal</span>
+          <span class="cart-drawer__subtotal-value" id="cartSubtotal"
+            >KSh 0</span
+          >
+        </div>
+        <a
+          id="cartCheckout"
+          class="btn btn--dark"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Checkout via WhatsApp
+        </a>
+      </div>
+    </aside>
+
+    <!-- ================= CART TOAST ================= -->
+    <div class="toast" id="cartToast" role="status" aria-live="polite"></div>
+
+    <!-- ================= WHATSAPP FLOAT ================= -->
+    <a
+      id="whatsappFloat"
+      href="#"
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with us on WhatsApp"
+    >
+      <svg
+        class="icon icon--lg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        stroke="none"
+      >
+        <path
+          d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.07c-.24.68-1.4 1.33-1.93 1.4-.5.08-1.11.11-1.79-.11a16.5 16.5 0 0 1-1.9-.7c-3.35-1.45-5.53-4.83-5.7-5.05-.17-.23-1.36-1.8-1.36-3.44 0-1.63.86-2.44 1.16-2.77.3-.33.66-.42.88-.42h.63c.2 0 .48-.08.75.57.27.66.93 2.28 1.01 2.44.08.17.13.36.03.58-.1.22-.15.36-.3.55-.15.19-.32.42-.46.56-.15.15-.31.32-.13.63.17.3.77 1.27 1.66 2.06 1.14 1.02 2.1 1.34 2.4 1.49.3.15.48.13.66-.08.18-.2.76-.89.97-1.19.2-.3.4-.25.68-.15.28.1 1.77.83 2.07.99.3.15.5.22.57.35.08.13.08.75-.16 1.42Z"
+        />
+      </svg>
+    </a>
+
+    <!-- Firebase (Firestore is used only to read published products — see README.md) -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="storefront.js"></script>
+  </body>
+</html>
