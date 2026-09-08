@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parts & Upgrades | Laptop Care Ltd</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body data-page="parts">
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a href="index.html" class="site-header__logo">
+          <span class="site-header__logo-plate">
+            <img src="images\LaptopCare Ltd Logo (1).png" alt="Laptop Care Ltd" />
+          </span>
+        </a>
+
+        <nav class="site-header__nav">
+          <a href="laptops.html" data-nav="laptops">Laptops</a>
+          <a href="parts.html" data-nav="parts">Parts</a>
+          <a href="repairs.html" data-nav="repairs">Repairs</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
+
+          <div class="header-search">
+            <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
+            <input type="text" id="searchInput" placeholder="Search parts…" />
+          </div>
+
+          <button class="cart-toggle" id="cartToggle" aria-label="Open cart">
+            <svg class="icon" viewBox="0 0 24 24">
+              <path d="M6 6h15l-1.5 9h-12L4 3H2" />
+              <circle cx="9" cy="20" r="1" />
+              <circle cx="18" cy="20" r="1" />
+            </svg>
+            <span class="cart-toggle__count" id="cartCount">0</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <a href="#" id="backLink" class="back-link">
+          <svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" /></svg>
+          Back
+        </a>
+
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span class="breadcrumb__current">Parts</span>
+        </div>
+
+        <div class="tech-tag">
+          <span class="tech-tag__dot"></span>
+          Parts · In stock
+        </div>
+
+        <h1 class="page-hero__title page-hero__title--tech">Parts & upgrades.</h1>
+        <p class="page-hero__subtext">
+          Not ready to replace the whole machine? Upgrade or repair it
+          instead. Jump straight to a category below.
+        </p>
+
+        <div class="filter-tabs parts-nav">
+          <a class="filter-tab" href="#parts-batteries">Batteries</a>
+          <a class="filter-tab" href="#parts-chargers">Chargers & Adapters</a>
+          <a class="filter-tab" href="#parts-keyboards">Keyboards</a>
+          <a class="filter-tab" href="#parts-ram-storage">RAM & Storage</a>
+          <a class="filter-tab" href="#parts-screens">Screens</a>
+          <a class="filter-tab" href="#parts-hinges-casings">Hinges & Casings</a>
+          <a class="filter-tab" href="#parts-cooling-fans">Cooling Fans</a>
+          <a class="filter-tab" href="#parts-diagnostics">Diagnostics</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PARTS CATEGORY SECTIONS ================= -->
+    <section class="section section--white">
+      <div class="container">
+        <div class="parts-category" id="parts-batteries">
+          <div class="parts-category__head">
+            <div>
+              <span class="kicker">Category</span>
+              <h2 class="parts-category__title">Batteries</h2>
+            </div>
+          </div>
+          <div class="product-grid" id="partsGrid-batteries" data-product-grid>
+            <div class="empty-state">Loading…</div>
+          </div>
+        </div>
+
+        <div class="parts-category" id="parts-chargers">
+          <div class="parts-category__head">
+            <div>
+              <span class="kicker">Category</span>
+              <h2 class="parts-category__title">Chargers & Adapters</h2>
+            </div>
+          </div>
+          <div class="product-grid" id="partsGrid-chargers" data-product-grid>
+            <div class="empty-state">Loading…</div>
+          </div>
+        </div>
+
+        <div class="parts-category" id="parts-keyboards">
+          <div class="parts-category__head">
+            <div>
+              <span class="kicker">Category</span>
+              <h2 class="parts-category__title">Keyboards</h2>
+            </div>
+          </div>
+          <div class="product-grid" id="partsGrid-keyboards" data-product-grid>
+            <div class="empty-state">Loading…</div>
+          </div>
+        </div>
+
+        <div class="parts-category" id="parts-ram-storage">
+          <div class="parts-category__head">
+            <div>
+              <span class="kicker">Category</span>
+              <h2 class="parts-category__title">RAM & Storage</h2>
+            </div>
+          </div>
+          <div class="product-grid" id="partsGrid-ram-storage" data-product-grid>
+            <div class="empty-state">Loading…</div>
+          </div>
+        </div>
+
+        <div class="parts-category" id="parts-screens">
+          <div class="parts-category__head">
+            <div>
+              <span class="kicker">Category</span>
+              <h2 class="parts-category__title">Screens</h2>
+            </div>
+          </div>
+          <div class="product-grid" id="partsGrid-screens" data-product-grid>
+            <div class="empty-state">Loading…</div>
+          </div>
+        </div>
+
+        <div class="parts-category" id="parts-hinges-casings">
+          <div class="parts-category__head">
+            <div>
+              <span class="kicker">Category</span>
+              <h2 class="parts-category__title">Hinges & Casings</h2>
+            </div>
+          </div>
+          <div class="product-grid" id="partsGrid-hinges-casings" data-product-grid>
+            <div class="empty-state">Loading…</div>
+          </div>
+        </div>
+
+        <div class="parts-category" id="parts-cooling-fans">
+          <div class="parts-category__head">
+            <div>
+              <span class="kicker">Category</span>
+              <h2 class="parts-category__title">Cooling Fans</h2>
+            </div>
+          </div>
+          <div class="product-grid" id="partsGrid-cooling-fans" data-product-grid>
+            <div class="empty-state">Loading…</div>
+          </div>
+        </div>
+
+        <div class="parts-category" id="parts-diagnostics">
+          <div class="parts-category__head">
+            <div>
+              <span class="kicker">Category</span>
+              <h2 class="parts-category__title">Diagnostics</h2>
+            </div>
+          </div>
+          <div class="product-grid" id="partsGrid-diagnostics" data-product-grid>
+            <div class="empty-state">Loading…</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CLOSING CTA ================= -->
+    <section class="cta">
+      <div class="cta__inner">
+        <div>
+          <h2 class="cta__title">Not sure which part you need?</h2>
+          <p class="cta__subtext">Send us the fault and we'll diagnose it for you.</p>
+        </div>
+
+        <div class="hero__actions">
+          <a href="repairs.html" class="btn btn--primary">
+            Book a diagnosis
+            <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NEWSLETTER ================= -->
+    <section class="section" style="background: var(--ink-navy-raised); padding: 3.5rem 0;">
+      <div class="container">
+        <div class="newsletter-row">
+          <div>
+            <h2 class="section-title section-title--sm" style="color: var(--white); margin: 0;">
+              Stay in the loop with new stock.
+            </h2>
+            <p style="margin: 0.5rem 0 0; color: rgba(255,255,255,0.7); font-size: 0.9375rem; max-width: 28rem;">
+              Be first to hear about new laptop drops, part restocks, and repair offers.
+            </p>
+          </div>
+
+          <form id="newsletterForm" class="newsletter-form">
+            <input type="email" id="newsletterEmail" placeholder="Email address" required />
+            <button type="submit" class="btn btn--primary">Notify me</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MEGA FOOTER ================= -->
+    <footer class="site-footer">
+      <div class="site-footer__inner site-footer__inner--wide">
+        <div>
+          <a href="index.html" class="site-footer__logo">
+            <span class="site-footer__logo-plate">
+              <img src="images\LaptopCare Ltd Logo (1).png" alt="Laptop Care Ltd" />
+            </span>
+          </a>
+          <p class="site-footer__blurb" style="margin-top: 1rem;">
+            New and refurbished laptops, parts, and repairs — graded honestly,
+            tested before it reaches you, and backed by a 90-day warranty.
+          </p>
+          <div class="site-footer__social" id="footerSocial" style="margin-top: 1rem;"></div>
+        </div>
+
+        <div>
+          <h3 class="site-footer__heading">Shop</h3>
+          <div class="site-footer__links">
+            <a href="laptops.html">Laptops</a>
+            <a href="parts.html">Parts</a>
+            <a href="repairs.html">Repairs</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="site-footer__heading">Company</h3>
+          <div class="site-footer__links">
+            <a href="index.html">Home</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="site-footer__heading">Get Help</h3>
+          <div class="site-footer__links">
+            <a href="https://wa.me/254741546004" target="_blank" rel="noopener noreferrer">WhatsApp Support</a>
+            <a href="mailto:info@laptopcare.co.ke">Email Support</a>
+            <a href="laptops.html">Warranty & Grading</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <span>&copy; <span id="footerYear"></span> Laptop Care Ltd. All rights reserved.</span>
+        <span>Your bridge to ICT solutions.</span>
+      </div>
+    </footer>
+
+    <!-- ================= CART DRAWER ================= -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+      <div class="cart-drawer__header">
+        <span class="cart-drawer__title">Your cart</span>
+        <button class="cart-drawer__close" id="cartClose" aria-label="Close cart">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" /></svg>
+        </button>
+      </div>
+
+      <div class="cart-drawer__items" id="cartItems"></div>
+
+      <div class="cart-drawer__footer">
+        <div class="cart-drawer__subtotal">
+          <span>Subtotal</span>
+          <span class="cart-drawer__subtotal-value" id="cartSubtotal">KSh 0</span>
+        </div>
+        <a id="cartCheckout" class="btn btn--dark" href="#" target="_blank" rel="noopener noreferrer">
+          Checkout via WhatsApp
+        </a>
+      </div>
+    </aside>
+
+    <div class="toast" id="cartToast" role="status" aria-live="polite"></div>
+
+    
+      id="whatsappFloat"
+      href="#"
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with us on WhatsApp"
+    >
+      <svg class="icon icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+        <path
+          d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.07c-.24.68-1.4 1.33-1.93 1.4-.5.08-1.11.11-1.79-.11a16.5 16.5 0 0 1-1.9-.7c-3.35-1.45-5.53-4.83-5.7-5.05-.17-.23-1.36-1.8-1.36-3.44 0-1.63.86-2.44 1.16-2.77.3-.33.66-.42.88-.42h.63c.2 0 .48-.08.75.57.27.66.93 2.28 1.01 2.44.08.17.13.36.03.58-.1.22-.15.36-.3.55-.15.19-.32.42-.46.56-.15.15-.31.32-.13.63.17.3.77 1.27 1.66 2.06 1.14 1.02 2.1 1.34 2.4 1.49.3.15.48.13.66-.08.18-.2.76-.89.97-1.19.2-.3.4-.25.68-.15.28.1 1.77.83 2.07.99.3.15.5.22.57.35.08.13.08.75-.16 1.42Z"
+        />
+      </svg>
+    </a>
+
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="storefront.js"></script>
+    <script>
+      document.getElementById("footerYear").textContent = new Date().getFullYear();
+
+      document.getElementById("newsletterForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("newsletterEmail").value.trim();
+        const message = `Hi, please add me to your mailing list: ${email}`;
+        window.open(`https://wa.me/254741546004?text=${encodeURIComponent(message)}`, "_blank");
+      });
+    </script>
+  </body>
+</html>

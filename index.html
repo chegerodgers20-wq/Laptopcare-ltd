@@ -16,24 +16,19 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body>
+  <body data-page="home">
     <!-- ================= HEADER ================= -->
     <header class="site-header">
       <div class="site-header__inner">
-        <a href="/" class="site-header__logo">
-          <span class="site-header__logo-plate">
-            <img
-              src="images\LaptopCare Ltd Logo (1).png"
-              alt="Laptop Care Ltd"
-            />
-          </span>
+        <a href="index.html" class="site-header__logo">
+          <img src="images\LaptopCare Ltd Logo (1).png" alt="Laptop Care Ltd" />
         </a>
 
         <nav class="site-header__nav">
-          <a href="#products">Laptops</a>
-          <a href="#parts">Parts</a>
-          <a href="#repairs">Repairs</a>
-          <a href="#contact">Contact</a>
+          <a href="laptops.html" data-nav="laptops">Laptops</a>
+          <a href="parts.html" data-nav="parts">Parts</a>
+          <a href="repairs.html" data-nav="repairs">Repairs</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
           <button class="cart-toggle" id="cartToggle" aria-label="Open cart">
             <svg class="icon" viewBox="0 0 24 24">
               <path d="M6 6h15l-1.5 9h-12L4 3H2" />
@@ -68,14 +63,14 @@
           </p>
 
           <div class="hero__actions">
-            <a href="#products" class="btn btn--primary">
+            <a href="laptops.html" class="btn btn--primary">
               Laptops
               <svg class="icon" viewBox="0 0 24 24">
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </a>
 
-            <a href="#parts" class="btn btn--outline-light">Shop parts</a>
+            <a href="parts.html" class="btn btn--outline-light">Shop parts</a>
           </div>
         </div>
 
@@ -103,10 +98,10 @@
             <span class="kicker">Featured</span>
             <h2 class="section-title">Popular this week.</h2>
           </div>
-          <a href="#" class="link-arrow">View all laptops →</a>
+          <a href="laptops.html" class="link-arrow">View all laptops →</a>
         </div>
 
-        <div class="product-grid" id="productGrid">
+        <div class="product-grid" id="productGrid" data-product-grid>
           <div class="empty-state">Loading laptops…</div>
         </div>
       </div>
@@ -146,7 +141,7 @@
               Not ready to replace it? Upgrade it.
             </h2>
           </div>
-          <a href="#" class="link-arrow">Browse all parts →</a>
+          <a href="parts.html" class="link-arrow">Browse all parts →</a>
         </div>
 
         <div class="chip-row" id="partsChips">
@@ -182,17 +177,64 @@
         </div>
 
         <div class="hero__actions">
-          <a href="#products" class="btn btn--primary">
+          <a href="laptops.html" class="btn btn--primary">
             Shop now
             <svg class="icon" viewBox="0 0 24 24">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
           </a>
 
-          <a href="#repairs" class="btn btn--outline-light">Book a repair</a>
+          <a href="repairs.html" class="btn btn--outline-light">Book a repair</a>
         </div>
       </div>
     </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div>
+          <a href="index.html" class="site-footer__logo">
+            <img src="images/laptopcare-logo-white.png" alt="Laptop Care Ltd" />
+          </a>
+          <p class="site-footer__blurb">
+            New and refurbished laptops, parts, and repairs — graded
+            honestly, tested before it reaches you, and backed by a 90-day
+            warranty.
+          </p>
+          <div class="site-footer__social" id="footerSocial">
+            <!-- injected by storefront.js -->
+          </div>
+        </div>
+
+        <div>
+          <h3 class="site-footer__heading">Shop</h3>
+          <div class="site-footer__links">
+            <a href="laptops.html">Laptops</a>
+            <a href="parts.html">Parts</a>
+            <a href="repairs.html">Repairs</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="site-footer__heading">Get in touch</h3>
+          <div class="site-footer__links">
+            
+              href="https://wa.me/254741546004"
+              target="_blank"
+              rel="noopener noreferrer"
+              >WhatsApp us</a
+            >
+            <a href="contact.html">Contact page</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <span>&copy; <span id="footerYear"></span> Laptop Care Ltd. All rights reserved.</span>
+        <span>Your bridge to ICT solutions.</span>
+      </div>
+    </footer>
 
     <!-- ================= CART DRAWER ================= -->
     <div class="cart-overlay" id="cartOverlay"></div>
@@ -221,7 +263,7 @@
             >KSh 0</span
           >
         </div>
-        <a
+        
           id="cartCheckout"
           class="btn btn--dark"
           href="#"
@@ -237,7 +279,7 @@
     <div class="toast" id="cartToast" role="status" aria-live="polite"></div>
 
     <!-- ================= WHATSAPP FLOAT ================= -->
-    <a
+    
       id="whatsappFloat"
       href="#"
       class="whatsapp-float"
@@ -262,5 +304,8 @@
     <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
     <script src="firebase-config.js"></script>
     <script src="storefront.js"></script>
+    <script>
+      document.getElementById("footerYear").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
