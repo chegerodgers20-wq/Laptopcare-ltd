@@ -21,7 +21,9 @@
     <header class="site-header">
       <div class="site-header__inner">
         <a href="index.html" class="site-header__logo">
-          <img src="images\LaptopCare Ltd Logo (1).png" alt="Laptop Care Ltd" />
+          <span class="site-header__logo-plate">
+            <img src="images\LaptopCare Ltd Logo (1).png" alt="Laptop Care Ltd" />
+          </span>
         </a>
 
         <nav class="site-header__nav">
@@ -29,6 +31,12 @@
           <a href="parts.html" data-nav="parts">Parts</a>
           <a href="repairs.html" data-nav="repairs">Repairs</a>
           <a href="contact.html" data-nav="contact">Contact</a>
+
+          <div class="header-search">
+            <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
+            <input type="text" id="searchInput" placeholder="Search…" />
+          </div>
+
           <button class="cart-toggle" id="cartToggle" aria-label="Open cart">
             <svg class="icon" viewBox="0 0 24 24">
               <path d="M6 6h15l-1.5 9h-12L4 3H2" />
@@ -44,7 +52,6 @@
     <!-- ================= HERO ================= -->
     <section class="hero">
       <div class="hero__inner">
-        <!-- LEFT SIDE: HERO COPY -->
         <div class="hero__copy">
           <div class="eyebrow">
             <span class="eyebrow__dot"></span>
@@ -74,7 +81,6 @@
           </div>
         </div>
 
-        <!-- RIGHT SIDE: STAT STRIP -->
         <div class="stat-strip" id="statStrip">
           <!-- rows injected by storefront.js -->
         </div>
@@ -189,19 +195,42 @@
       </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
+    <!-- ================= NEWSLETTER ================= -->
+    <section class="section" style="background: var(--ink-navy-raised); padding: 3.5rem 0;">
+      <div class="container">
+        <div class="newsletter-row">
+          <div>
+            <h2 class="section-title section-title--sm" style="color: var(--white); margin: 0;">
+              Stay in the loop with new stock.
+            </h2>
+            <p style="margin: 0.5rem 0 0; color: rgba(255,255,255,0.7); font-size: 0.9375rem; max-width: 28rem;">
+              Be first to hear about new laptop drops, part restocks, and repair offers.
+            </p>
+          </div>
+
+          <form id="newsletterForm" class="newsletter-form">
+            <input type="email" id="newsletterEmail" placeholder="Email address" required />
+            <button type="submit" class="btn btn--primary">Notify me</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MEGA FOOTER ================= -->
     <footer class="site-footer">
-      <div class="site-footer__inner">
+      <div class="site-footer__inner site-footer__inner--wide">
         <div>
           <a href="index.html" class="site-footer__logo">
-            <img src="images/laptopcare-logo-white.png" alt="Laptop Care Ltd" />
+            <span class="site-footer__logo-plate">
+              <img src="images\LaptopCare Ltd Logo (1).png" alt="Laptop Care Ltd" />
+            </span>
           </a>
-          <p class="site-footer__blurb">
+          <p class="site-footer__blurb" style="margin-top: 1rem;">
             New and refurbished laptops, parts, and repairs — graded
             honestly, tested before it reaches you, and backed by a 90-day
             warranty.
           </p>
-          <div class="site-footer__social" id="footerSocial">
+          <div class="site-footer__social" id="footerSocial" style="margin-top: 1rem;">
             <!-- injected by storefront.js -->
           </div>
         </div>
@@ -212,20 +241,23 @@
             <a href="laptops.html">Laptops</a>
             <a href="parts.html">Parts</a>
             <a href="repairs.html">Repairs</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="site-footer__heading">Company</h3>
+          <div class="site-footer__links">
+            <a href="index.html">Home</a>
             <a href="contact.html">Contact</a>
           </div>
         </div>
 
         <div>
-          <h3 class="site-footer__heading">Get in touch</h3>
+          <h3 class="site-footer__heading">Get Help</h3>
           <div class="site-footer__links">
-            
-              href="https://wa.me/254741546004"
-              target="_blank"
-              rel="noopener noreferrer"
-              >WhatsApp us</a
-            >
-            <a href="contact.html">Contact page</a>
+            <a href="https://wa.me/254741546004" target="_blank" rel="noopener noreferrer">WhatsApp Support</a>
+            <a href="mailto:info@laptopcare.co.ke">Email Support</a>
+            <a href="laptops.html">Warranty & Grading</a>
           </div>
         </div>
       </div>
@@ -241,14 +273,8 @@
     <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
       <div class="cart-drawer__header">
         <span class="cart-drawer__title">Your cart</span>
-        <button
-          class="cart-drawer__close"
-          id="cartClose"
-          aria-label="Close cart"
-        >
-          <svg class="icon" viewBox="0 0 24 24">
-            <path d="M18 6 6 18M6 6l12 12" />
-          </svg>
+        <button class="cart-drawer__close" id="cartClose" aria-label="Close cart">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" /></svg>
         </button>
       </div>
 
@@ -259,17 +285,9 @@
       <div class="cart-drawer__footer">
         <div class="cart-drawer__subtotal">
           <span>Subtotal</span>
-          <span class="cart-drawer__subtotal-value" id="cartSubtotal"
-            >KSh 0</span
-          >
+          <span class="cart-drawer__subtotal-value" id="cartSubtotal">KSh 0</span>
         </div>
-        
-          id="cartCheckout"
-          class="btn btn--dark"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a id="cartCheckout" class="btn btn--dark" href="#" target="_blank" rel="noopener noreferrer">
           Checkout via WhatsApp
         </a>
       </div>
@@ -306,6 +324,13 @@
     <script src="storefront.js"></script>
     <script>
       document.getElementById("footerYear").textContent = new Date().getFullYear();
+
+      document.getElementById("newsletterForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("newsletterEmail").value.trim();
+        const message = `Hi, please add me to your mailing list: ${email}`;
+        window.open(`https://wa.me/254741546004?text=${encodeURIComponent(message)}`, "_blank");
+      });
     </script>
   </body>
 </html>

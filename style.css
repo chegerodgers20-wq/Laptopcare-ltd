@@ -218,14 +218,15 @@ button {
 
 .site-header__logo-plate img,
 .site-footer__logo-plate img {
-  height: 2.25rem;
+  height: 2.5rem;
   width: auto;
   display: block;
 }
 
 @media (min-width: 640px) {
-  .site-header__logo-plate img {
-    height: 2.5rem;
+  .site-header__logo-plate img,
+  .site-footer__logo-plate img {
+    height: 2.85rem;
   }
 }
 
