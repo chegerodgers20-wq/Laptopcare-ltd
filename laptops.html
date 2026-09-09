@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Parts & Upgrades | Laptop Care Ltd</title>
+    <title>Laptops | Laptop Care Ltd</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body data-page="parts">
+  <body data-page="laptops">
     <header class="site-header">
       <div class="site-header__inner">
         <a href="index.html" class="site-header__logo">
@@ -33,7 +33,7 @@
 
           <div class="header-search">
             <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
-            <input type="text" id="searchInput" placeholder="Search parts…" />
+            <input type="text" id="searchInput" placeholder="Search laptops…" />
           </div>
 
           <button class="cart-toggle" id="cartToggle" aria-label="Open cart">
@@ -58,129 +58,67 @@
         <div class="breadcrumb">
           <a href="index.html">Home</a>
           <span>/</span>
-          <span class="breadcrumb__current">Parts</span>
+          <span class="breadcrumb__current">Laptops</span>
         </div>
 
         <div class="tech-tag">
           <span class="tech-tag__dot"></span>
-          Inventory · Live
+          Catalog · Live
         </div>
 
-        <h1 class="page-hero__title page-hero__title--tech">Parts & upgrades.</h1>
+        <h1 class="page-hero__title page-hero__title--tech">All laptops.</h1>
         <p class="page-hero__subtext">
-          Not ready to replace the whole machine? Upgrade or repair it
-          instead. Jump straight to a category below.
+          New and refurbished, graded honestly. Every refurbished unit is
+          tested before listing and ships with a 90-day warranty.
         </p>
 
-        <div class="filter-tabs parts-nav">
-          <a class="filter-tab" href="#parts-batteries">Batteries</a>
-          <a class="filter-tab" href="#parts-chargers">Chargers & Adapters</a>
-          <a class="filter-tab" href="#parts-keyboards">Keyboards</a>
-          <a class="filter-tab" href="#parts-ram-storage">RAM & Storage</a>
-          <a class="filter-tab" href="#parts-screens">Screens</a>
-          <a class="filter-tab" href="#parts-hinges-casings">Hinges & Casings</a>
-          <a class="filter-tab" href="#parts-cooling-fans">Cooling Fans</a>
-          <a class="filter-tab" href="#parts-diagnostics">Diagnostics</a>
+        <div class="filter-tabs">
+          <button type="button" class="filter-tab" data-type="all">All</button>
+          <button type="button" class="filter-tab" data-type="new">New</button>
+          <button type="button" class="filter-tab" data-type="refurbished">Refurbished</button>
         </div>
       </div>
     </section>
 
     <section class="section section--white">
       <div class="container">
-        <div class="parts-category" id="parts-batteries">
-          <div class="parts-category__head">
-            <div>
-              <span class="kicker">Category</span>
-              <h2 class="parts-category__title">Batteries</h2>
-            </div>
+        <div class="section-head">
+          <div>
+            <span class="kicker">In stock</span>
+            <h2 class="section-title section-title--sm">Browse laptops.</h2>
           </div>
-          <div class="product-grid" id="partsGrid-batteries" data-product-grid>
-            <div class="empty-state">Loading…</div>
-          </div>
+
+          <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.8125rem;color:var(--slate);">
+            Sort by
+            <select id="sortSelect" class="filter-tab" style="color:var(--ink-navy);border-color:var(--border);background:var(--white);">
+              <option value="brand">Brand (A–Z)</option>
+              <option value="newest">Newest</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+            </select>
+          </label>
         </div>
 
-        <div class="parts-category" id="parts-chargers">
-          <div class="parts-category__head">
-            <div>
-              <span class="kicker">Category</span>
-              <h2 class="parts-category__title">Chargers & Adapters</h2>
-            </div>
-          </div>
-          <div class="product-grid" id="partsGrid-chargers" data-product-grid>
-            <div class="empty-state">Loading…</div>
-          </div>
+        <div class="product-grid" id="productGrid" data-product-grid>
+          <div class="empty-state">Loading laptops…</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head section-head--single">
+          <span class="kicker">How we grade</span>
+          <h2 class="section-title">The grade on the listing is the condition you'll get.</h2>
         </div>
 
-        <div class="parts-category" id="parts-keyboards">
-          <div class="parts-category__head">
-            <div>
-              <span class="kicker">Category</span>
-              <h2 class="parts-category__title">Keyboards</h2>
-            </div>
-          </div>
-          <div class="product-grid" id="partsGrid-keyboards" data-product-grid>
-            <div class="empty-state">Loading…</div>
-          </div>
-        </div>
+        <div class="grade-grid" id="gradeGrid"></div>
 
-        <div class="parts-category" id="parts-ram-storage">
-          <div class="parts-category__head">
-            <div>
-              <span class="kicker">Category</span>
-              <h2 class="parts-category__title">RAM & Storage</h2>
-            </div>
-          </div>
-          <div class="product-grid" id="partsGrid-ram-storage" data-product-grid>
-            <div class="empty-state">Loading…</div>
-          </div>
-        </div>
-
-        <div class="parts-category" id="parts-screens">
-          <div class="parts-category__head">
-            <div>
-              <span class="kicker">Category</span>
-              <h2 class="parts-category__title">Screens</h2>
-            </div>
-          </div>
-          <div class="product-grid" id="partsGrid-screens" data-product-grid>
-            <div class="empty-state">Loading…</div>
-          </div>
-        </div>
-
-        <div class="parts-category" id="parts-hinges-casings">
-          <div class="parts-category__head">
-            <div>
-              <span class="kicker">Category</span>
-              <h2 class="parts-category__title">Hinges & Casings</h2>
-            </div>
-          </div>
-          <div class="product-grid" id="partsGrid-hinges-casings" data-product-grid>
-            <div class="empty-state">Loading…</div>
-          </div>
-        </div>
-
-        <div class="parts-category" id="parts-cooling-fans">
-          <div class="parts-category__head">
-            <div>
-              <span class="kicker">Category</span>
-              <h2 class="parts-category__title">Cooling Fans</h2>
-            </div>
-          </div>
-          <div class="product-grid" id="partsGrid-cooling-fans" data-product-grid>
-            <div class="empty-state">Loading…</div>
-          </div>
-        </div>
-
-        <div class="parts-category" id="parts-diagnostics">
-          <div class="parts-category__head">
-            <div>
-              <span class="kicker">Category</span>
-              <h2 class="parts-category__title">Diagnostics</h2>
-            </div>
-          </div>
-          <div class="product-grid" id="partsGrid-diagnostics" data-product-grid>
-            <div class="empty-state">Loading…</div>
-          </div>
+        <div class="warranty-note">
+          <svg class="icon icon--sm icon--accent" viewBox="0 0 24 24">
+            <path d="M12 2 3 6v6c0 5 3.8 9 9 10 5.2-1 9-5 9-10V6l-9-4Z" />
+          </svg>
+          Every refurbished laptop ships with a 90-day warranty regardless of grade.
         </div>
       </div>
     </section>
@@ -188,13 +126,13 @@
     <section class="cta">
       <div class="cta__inner">
         <div>
-          <h2 class="cta__title">Not sure which part you need?</h2>
-          <p class="cta__subtext">Send us the fault and we'll diagnose it for you.</p>
+          <h2 class="cta__title">Looking for a part instead?</h2>
+          <p class="cta__subtext">Screens, batteries, keyboards, and more — in stock.</p>
         </div>
 
         <div class="hero__actions">
-          <a href="repairs.html" class="btn btn--primary">
-            Book a diagnosis
+          <a href="parts.html" class="btn btn--primary">
+            Shop parts
             <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
           </a>
         </div>

@@ -1405,6 +1405,8 @@ button {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
+  display: block;
+  cursor: pointer;
 }
 
 .contact-card__icon {

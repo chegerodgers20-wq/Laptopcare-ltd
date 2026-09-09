@@ -16,7 +16,6 @@
   </head>
 
   <body data-page="repairs">
-    <!-- ================= HEADER ================= -->
     <header class="site-header">
       <div class="site-header__inner">
         <a href="index.html" class="site-header__logo">
@@ -26,6 +25,7 @@
         </a>
 
         <nav class="site-header__nav">
+          <a href="store.html" data-nav="store">Store</a>
           <a href="laptops.html" data-nav="laptops">Laptops</a>
           <a href="parts.html" data-nav="parts">Parts</a>
           <a href="repairs.html" data-nav="repairs">Repairs</a>
@@ -48,7 +48,6 @@
       </div>
     </header>
 
-    <!-- ================= PAGE HERO ================= -->
     <section class="page-hero">
       <div class="page-hero__inner">
         <a href="#" id="backLink" class="back-link">
@@ -64,7 +63,7 @@
 
         <div class="tech-tag">
           <span class="tech-tag__dot"></span>
-          Repairs · Booking open
+          Service · Available
         </div>
 
         <h1 class="page-hero__title page-hero__title--tech">Repairs & diagnostics.</h1>
@@ -82,7 +81,6 @@
       </div>
     </section>
 
-    <!-- ================= SERVICES ================= -->
     <section class="section section--white">
       <div class="container">
         <div class="section-head section-head--single">
@@ -94,7 +92,6 @@
       </div>
     </section>
 
-    <!-- ================= PROCESS ================= -->
     <section class="section">
       <div class="container">
         <div class="section-head section-head--single">
@@ -114,7 +111,6 @@
       </div>
     </section>
 
-    <!-- ================= CLOSING CTA ================= -->
     <section class="cta">
       <div class="cta__inner">
         <div>
@@ -130,7 +126,6 @@
       </div>
     </section>
 
-    <!-- ================= NEWSLETTER ================= -->
     <section class="section" style="background: var(--ink-navy-raised); padding: 3.5rem 0;">
       <div class="container">
         <div class="newsletter-row">
@@ -151,7 +146,6 @@
       </div>
     </section>
 
-    <!-- ================= MEGA FOOTER ================= -->
     <footer class="site-footer">
       <div class="site-footer__inner site-footer__inner--wide">
         <div>
@@ -161,8 +155,9 @@
             </span>
           </a>
           <p class="site-footer__blurb" style="margin-top: 1rem;">
-            New and refurbished laptops, parts, and repairs — graded honestly,
-            tested before it reaches you, and backed by a 90-day warranty.
+            New and refurbished laptops, parts, and repairs — graded
+            honestly, tested before it reaches you, and backed by a 90-day
+            warranty.
           </p>
           <div class="site-footer__social" id="footerSocial" style="margin-top: 1rem;"></div>
         </div>
@@ -170,6 +165,7 @@
         <div>
           <h3 class="site-footer__heading">Shop</h3>
           <div class="site-footer__links">
+            <a href="store.html">Store</a>
             <a href="laptops.html">Laptops</a>
             <a href="parts.html">Parts</a>
             <a href="repairs.html">Repairs</a>
@@ -200,7 +196,6 @@
       </div>
     </footer>
 
-    <!-- ================= CART DRAWER ================= -->
     <div class="cart-overlay" id="cartOverlay"></div>
     <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
       <div class="cart-drawer__header">
@@ -227,7 +222,7 @@
 
     
       id="whatsappFloat"
-      href="#"
+      href="https://wa.me/254741546004?text=Hi%2C%20can%20I%20get%20more%20info%20on%20this%3F"
       class="whatsapp-float"
       target="_blank"
       rel="noopener noreferrer"
@@ -246,13 +241,13 @@
     <script src="storefront.js"></script>
     <script>
       document.getElementById("footerYear").textContent = new Date().getFullYear();
-
-      document.getElementById("newsletterForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-        const email = document.getElementById("newsletterEmail").value.trim();
-        const message = `Hi, please add me to your mailing list: ${email}`;
-        window.open(`https://wa.me/254741546004?text=${encodeURIComponent(message)}`, "_blank");
-      });
+      const topBtn = document.getElementById("bookRepairBtn");
+      const bottomBtn = document.getElementById("bookRepairBtnBottom");
+      if (topBtn && bottomBtn) {
+        const setLink = () => (bottomBtn.href = topBtn.href);
+        setLink();
+        setTimeout(setLink, 0);
+      }
     </script>
   </body>
 </html>

@@ -1,9 +1,10 @@
 /* ==========================================================
    storefront.js — Laptop Care Ltd public storefront
    ----------------------------------------------------------
-   Shared by index.html, laptops.html, parts.html, repairs.html,
-   and contact.html. Every render function checks the target
-   element exists first, since not every page has every section.
+   Shared by index.html, store.html, laptops.html, parts.html,
+   repairs.html, and contact.html. Every render function checks
+   the target element exists first, since not every page has
+   every section.
 
    Products load live from Firestore (collection: "products").
    Add these fields from admin.html for best results (all optional
@@ -15,9 +16,6 @@
    ========================================================== */
 
 const CURRENCY = "KES";
-
-// Single source of truth for the WhatsApp number — used by the
-// floating button, cart checkout, and the repairs booking link.
 const WHATSAPP_NUMBER = "254741546004";
 
 function formatKES(amount) {
@@ -36,8 +34,8 @@ function waLink(message) {
 
 const STATS = [
   { value: "500+", label: "Laptops refurbished" },
-  { value: "72hr", label: "Average repair turnaround" },
-  { value: "90 day", label: "Warranty on every unit" },
+  { value: "72hrs", label: "Average repair turnaround" },
+  { value: "90d ay", label: "Warranty on every unit" },
   { value: "Grade A to C", label: "Honest, visible condition rating" },
 ];
 
@@ -62,6 +60,29 @@ const CATEGORIES = [
   },
 ];
 
+// The Store page's three hub cards — reuses the same .category-card
+// styling as the homepage grid above, just different content/links.
+const STORE_SECTIONS = [
+  {
+    title: "Laptops",
+    desc: "New and refurbished laptops, graded honestly and tested before listing.",
+    icon: `<path d="M4 5h16v10H4z"/><path d="M2 19h20l-1.5-2h-17L2 19Z"/>`,
+    href: "laptops.html",
+  },
+  {
+    title: "Parts & Upgrades",
+    desc: "Batteries, chargers, keyboards, screens, RAM, storage, and more.",
+    icon: `<path d="M14 4 4 14l3 3 10-10-3-3Z"/><path d="M9 19h10"/>`,
+    href: "parts.html",
+  },
+  {
+    title: "Repairs & Diagnostics",
+    desc: "Screen, battery, keyboard, motherboard, and data recovery services.",
+    icon: `<rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/>`,
+    href: "repairs.html",
+  },
+];
+
 const GRADES = [
   {
     letter: "A",
@@ -80,8 +101,6 @@ const GRADES = [
   },
 ];
 
-// Used for the homepage chip strip and as the source of Parts page
-// sections (each entry becomes its own heading + grid on parts.html).
 const PART_TYPES = [
   { key: "batteries", label: "Batteries", keywords: ["battery", "batteries"] },
   {
@@ -141,8 +160,6 @@ const TESTIMONIALS = [
   },
 ];
 
-// Edit the "eta" field on any service below to change the turnaround
-// time shown on repairs.html — nothing else needs to change.
 const REPAIR_SERVICES = [
   {
     title: "Screen replacement",
@@ -220,7 +237,7 @@ const SOCIAL_LINKS = [
   },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/company/laptopcareltd",
+    href: "https://www.linkedin.com/company/71626674/admin/dashboard/",
     icon: `<path d="M15 8a5 5 0 0 1 5 5v6h-3v-6a2 2 0 0 0-4 0v6h-3v-10h3v1.3A4.98 4.98 0 0 1 15 8Z"/><rect x="3" y="9" width="3" height="10"/><circle cx="4.5" cy="5" r="1.6"/>`,
   },
   {
@@ -294,6 +311,24 @@ function renderCategories() {
   ).join("");
 }
 
+function renderStoreGrid() {
+  const el = document.getElementById("storeGrid");
+  if (!el) return;
+  el.innerHTML = STORE_SECTIONS.map(
+    (c) => `
+    <a class="category-card" href="${c.href}">
+      <div class="category-card__icon">
+        <svg class="icon" viewBox="0 0 24 24">${c.icon}</svg>
+      </div>
+      <div class="category-card__title">
+        ${c.title}
+        <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+      <div class="category-card__desc">${c.desc}</div>
+    </a>`,
+  ).join("");
+}
+
 function renderGrades() {
   const el = document.getElementById("gradeGrid");
   if (!el) return;
@@ -310,8 +345,6 @@ function renderGrades() {
 }
 
 function renderPartsChipsHome() {
-  // Homepage's informational chip strip (not clickable — parts.html
-  // has the real clickable, jump-to-section version).
   const el = document.getElementById("partsChips");
   if (!el) return;
   el.innerHTML = PART_TYPES.map(
@@ -438,7 +471,7 @@ function sortDocs(docs, sortBy) {
   } else if (sortBy === "price-desc") {
     arr.sort((a, b) => (b.price || 0) - (a.price || 0));
   }
-  return arr; // "newest" keeps Firestore's createdAt-desc order
+  return arr;
 }
 
 function fetchPublishedProducts(limitCount) {
@@ -460,7 +493,6 @@ function fetchPublishedProducts(limitCount) {
     });
 }
 
-// Generic single-grid loader — homepage and laptops.html use this.
 function loadProducts({
   gridId = "productGrid",
   category = null,
@@ -499,7 +531,6 @@ function loadProducts({
     });
 }
 
-// Parts page: one grid per category, grouped client-side by partType.
 function loadPartsPage() {
   PART_TYPES.forEach((t) => {
     const el = document.getElementById(`partsGrid-${t.key}`);
@@ -544,8 +575,6 @@ function loadPartsPage() {
       }
     });
 }
-
-/* ---------- Laptops page: brand-sort + type filter (no full reload) ---------- */
 
 function initLaptopsPage() {
   const params = new URLSearchParams(window.location.search);
@@ -760,11 +789,27 @@ function wireBackLink() {
   });
 }
 
+/* ---------- Newsletter (no email backend yet — opens WhatsApp instead) ---------- */
+
+function wireNewsletter() {
+  const form = document.getElementById("newsletterForm");
+  if (!form) return;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("newsletterEmail").value.trim();
+    window.open(
+      waLink(`Hi, please add me to your mailing list: ${email}`),
+      "_blank",
+    );
+  });
+}
+
 /* ---------- Event wiring ---------- */
 
 document.addEventListener("DOMContentLoaded", () => {
   renderStats();
   renderCategories();
+  renderStoreGrid();
   renderGrades();
   renderPartsChipsHome();
   renderTestimonials();
@@ -777,6 +822,7 @@ document.addEventListener("DOMContentLoaded", () => {
   highlightActiveNav();
   wireSearch();
   wireBackLink();
+  wireNewsletter();
 
   const cartToggle = document.getElementById("cartToggle");
   const cartClose = document.getElementById("cartClose");
